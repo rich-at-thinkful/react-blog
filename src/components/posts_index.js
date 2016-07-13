@@ -6,7 +6,6 @@ import { fetchPosts } from '../actions/index';
 class PostsIndex extends Component {
     componentWillMount () {
         // called the first time component is rendered; not subsequent times
-        console.log('good time to call action creator');
         this.props.fetchPosts();
     }
     
@@ -17,8 +16,5 @@ class PostsIndex extends Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ fetchPosts }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(PostsIndex);
+// shorthand removes mapPropsToDispatch
+export default connect(null, { fetchPosts })(PostsIndex);
